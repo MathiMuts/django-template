@@ -1,0 +1,8 @@
+# docker-compose.yml
+
+services:
+  web:
+    build: .
+    TODO:
+    environment:
+      - RUNNING_IN_DOCKER=true
