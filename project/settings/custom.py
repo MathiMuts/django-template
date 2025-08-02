@@ -25,6 +25,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+if DEBUG:
+    INSTALLED_APPS.insert(-1, "django_browser_reload")
+    MIDDLEWARE.insert(-1, "django_browser_reload.middleware.BrowserReloadMiddleware")
+
 if not DEBUG:
     MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
 

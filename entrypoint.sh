@@ -17,8 +17,10 @@ fi
 echo "Applying database migrations..."
 python manage.py migrate --noinput
 
-echo "Collecting static files..."
-python manage.py collectstatic --noinput --clear
+if [ "$DJANGO_ENV" != "development" ]; then
+    echo "Collecting static files for production..."
+    python manage.py collectstatic --noinput --clear
+fi
  
 echo "Starting application server..."
 exec "$@"

@@ -1,0 +1,17 @@
+# docker-compose.override.yml
+
+services:
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:${APP_PORT}
+    
+    ports:
+      - "${APP_PORT}:${APP_PORT}"
+      
+    environment:
+      - DEBUG=1
+      - DJANGO_ENV=development
+
+  nginx:
+    ports: []
+    command: ["nginx", "-g", "daemon off;"]
