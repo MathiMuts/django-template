@@ -2,14 +2,11 @@
 
 services:
   web:
-    build: .
-    command: python manage.py runserver 0.0.0.0:${APP_PORT}
-    
+    command: python manage.py tailwind dev 0.0.0.0:${APP_PORT}
     ports:
       - "${APP_PORT}:${APP_PORT}"
-      
     environment:
-      - DEBUG=1
+      - DEBUG=True
       - DJANGO_ENV=development
 
   nginx:

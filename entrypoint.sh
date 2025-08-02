@@ -20,6 +20,9 @@ python manage.py migrate --noinput
 if [ "$DJANGO_ENV" != "development" ]; then
     echo "Collecting static files for production..."
     python manage.py collectstatic --noinput --clear
+
+    echo "Building css..."
+    python manage.py tailwind build
 fi
  
 echo "Starting application server..."

@@ -31,6 +31,8 @@ RUN apt-get update && \
     libpq5 \
     netcat-openbsd \
     procps \
+    nodejs \
+    npm \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean
 

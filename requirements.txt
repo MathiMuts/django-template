@@ -21,3 +21,4 @@ django-browser-reload==1.18.0
 whitenoise==6.9.0
 
 # Other imports
+django-tailwind==4.2.0
