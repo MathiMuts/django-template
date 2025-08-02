@@ -9,6 +9,9 @@ echo "Creating environment file for cron jobs..."
 echo "Applying database migrations..."
 python manage.py migrate --noinput
 
+echo "Installing tailwind..."
+python manage.py tailwind install
+
 if [ "$DJANGO_ENV" != "development" ]; then
     echo "Building css..."
     python manage.py tailwind build
