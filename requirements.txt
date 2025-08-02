@@ -20,5 +20,6 @@ django-browser-reload==1.18.0
 # Prod only:
 whitenoise==6.9.0
 
-# Other imports
+# Tailwind
 django-tailwind==4.2.0
+honcho

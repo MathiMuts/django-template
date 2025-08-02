@@ -47,6 +47,8 @@ RUN chmod +x /app/entrypoint.sh
 
 COPY . .
 
+RUN npm install --prefix ./theme/static_src/
+
 RUN mkdir -p /app/staticfiles /app/media && \
     chown -R ${APP_USER}:${APP_USER} /app
 

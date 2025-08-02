@@ -20,7 +20,8 @@ INSTALLED_APPS = [
 TAILWIND_APP_NAME = 'theme'
 
 # Only for windows make sure npm can be found by python
-NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
+# TODO:
+# NPM_BIN_PATH = r"C:\Program Files\nodejs\npm.cmd"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
