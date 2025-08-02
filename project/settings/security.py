@@ -33,14 +33,14 @@ if RUNNING_IN_DOCKER:
     USE_X_FORWARDED_HOST = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
-    if DEBUG == False:
+    if os.environ.get('SSL_TLS', 'False') == 'True':
         SECURE_SSL_REDIRECT = True # If all traffic should be HTTPS
         SESSION_COOKIE_SECURE = True
         CSRF_COOKIE_SECURE = True
 
-    CSRF_TRUSTED_ORIGINS_STRING = os.environ.get('DJANGO_CSRF_TRUSTED_ORIGINS', '')
-    if CSRF_TRUSTED_ORIGINS_STRING:
-        CSRF_TRUSTED_ORIGINS = [origin.strip() for origin in CSRF_TRUSTED_ORIGINS_STRING.split(',') if origin.strip()]
-    else:
-        CSRF_TRUSTED_ORIGINS = [f"http://{host}:{os.environ.get('APP_PORT', '8000')}" for host in ALLOWED_HOSTS if host not in ['*', '.example.com']]
-        CSRF_TRUSTED_ORIGINS.extend([f"http://localhost:{os.environ.get('APP_PORT', '8000')}", f"http://127.0.0.1:{os.environ.get('APP_PORT', '8000')}"])
+        CSRF_TRUSTED_ORIGINS_STRING = os.environ.get('DJANGO_CSRF_TRUSTED_ORIGINS', '')
+        if CSRF_TRUSTED_ORIGINS_STRING:
+            CSRF_TRUSTED_ORIGINS = [origin.strip() for origin in CSRF_TRUSTED_ORIGINS_STRING.split(',') if origin.strip()]
+        else:
+            CSRF_TRUSTED_ORIGINS = [f"http://{host}:{os.environ.get('APP_PORT', '8000')}" for host in ALLOWED_HOSTS if host not in ['*', '.example.com']]
+            CSRF_TRUSTED_ORIGINS.extend([f"http://localhost:{os.environ.get('APP_PORT', '8000')}", f"http://127.0.0.1:{os.environ.get('APP_PORT', '8000')}"])
