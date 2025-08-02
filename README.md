@@ -7,6 +7,7 @@ A template for Websites using Django, dockerised, redis-cache, tailwind
 docker compose up -d --build
 ```
 [http://localhost:8000/](http://localhost:8000/) voor de devserver.
+
 [http://localhost:8080/](http://localhost:8080/) voor de prodserver.
 
 ### terminal:
