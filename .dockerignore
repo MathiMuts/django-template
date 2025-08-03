@@ -41,3 +41,6 @@ npm-debug.log
 
 # Local DB
 *.sqlite3
+
+
+node_modules
