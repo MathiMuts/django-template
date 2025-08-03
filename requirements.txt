@@ -22,4 +22,4 @@ whitenoise==6.9.0
 
 # Tailwind
 django-tailwind==4.2.0
-honcho
+honcho==2.0.0

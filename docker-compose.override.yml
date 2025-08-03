@@ -2,13 +2,9 @@
 
 services:
   web:
-    command: python manage.py tailwind dev
+    command: python manage.py runserver 0.0.0.0:8000
     ports:
       - "${APP_PORT}:8000"
     environment:
       - DEBUG=True
       - DJANGO_ENV=development
-
-  nginx:
-    ports: []
-    command: ["nginx", "-g", "daemon off;"]
