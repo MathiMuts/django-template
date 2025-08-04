@@ -4,21 +4,18 @@ set -e
 
 echo "Entrypoint script started as user: $(whoami)"
 
-echo "Creating environment file for cron jobs..."
+echo "Setting mask..."
+umask 0002
 
 echo "Applying database migrations..."
 python manage.py migrate --noinput
 
-echo "Installing tailwind..."
+echo "Building css..."
 python manage.py tailwind install
+python manage.py tailwind build
 
-if [ "$DJANGO_ENV" != "development" ]; then
-    echo "Building css..."
-    python manage.py tailwind build
-    
-    echo "Collecting static files for production..."
-    python manage.py collectstatic --noinput --clear
-fi
+echo "Collecting static files for production..."
+python manage.py collectstatic --noinput --clear
 
 echo "Starting application server..."
 exec "$@"
