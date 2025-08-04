@@ -53,7 +53,13 @@ COPY . .
 
 RUN mkdir -p /app/staticfiles /app/media /app/theme/static /app/static
 
+RUN npm install --prefix ./theme/static_src/
+
 RUN chown -R ${APP_USER}:${APP_USER} /app
+
+RUN python manage.py tailwind install
+
+RUN python manage.py tailwind build
 
 # Switch to non-root
 USER ${APP_USER}

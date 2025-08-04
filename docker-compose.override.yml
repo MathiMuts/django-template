@@ -8,3 +8,5 @@ services:
     environment:
       - DEBUG=True
       - DJANGO_ENV=development
+    volumes:
+      - ./theme/static:/app/theme/static

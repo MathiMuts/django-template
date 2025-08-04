@@ -37,6 +37,7 @@ services:
     volumes:
       - ./:/app
       - /app/theme/static_src/node_modules
+      - /app/theme/static
       - static_volume:/app/staticfiles
       - media_volume:/app/media
     env_file:
