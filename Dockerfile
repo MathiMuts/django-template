@@ -51,6 +51,9 @@ RUN chmod +x /app/entrypoint.sh
 
 COPY . .
 
+RUN rm -rf /app/theme/static /app/staticfiles
+RUN mkdir -p /app/staticfiles /app/theme/static
+
 RUN mkdir -p /app/staticfiles /app/media /app/theme/static /app/static
 
 RUN npm install --prefix ./theme/static_src/
