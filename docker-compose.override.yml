@@ -9,4 +9,5 @@ services:
       - DEBUG=True
       - DJANGO_ENV=development
     volumes:
+      - ./:/app
       - ./theme/static:/app/theme/static

@@ -5,7 +5,7 @@ FROM python:3.13-slim AS base
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
-ARG APP_USER=www-data
+ARG APP_USER=appuser
 
 WORKDIR /app
 
@@ -32,6 +32,7 @@ RUN apt-get update && \
     netcat-openbsd \
     procps \
     curl \
+    gosu \
     && curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
     && apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/* \
@@ -54,18 +55,11 @@ COPY . .
 RUN rm -rf /app/theme/static /app/staticfiles
 RUN mkdir -p /app/staticfiles /app/theme/static
 
-RUN mkdir -p /app/staticfiles /app/media /app/theme/static /app/static
-
 RUN npm install --prefix ./theme/static_src/
 
 RUN chown -R ${APP_USER}:${APP_USER} /app
 
 RUN python manage.py tailwind install
-
-RUN python manage.py tailwind build
-
-# Switch to non-root
-USER ${APP_USER}
 
 EXPOSE 8000
 

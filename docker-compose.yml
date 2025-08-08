@@ -35,7 +35,6 @@ services:
     command: >
       sh -c "gunicorn project.wsgi:application --bind 0.0.0.0:8000 --workers 4 --threads 2 --worker-class gthread --timeout 660 --log-level info --access-logfile - --error-logfile -"
     volumes:
-      - ./:/app
       - /app/theme/static_src/node_modules
       - /app/theme/static
       - static_volume:/app/staticfiles
