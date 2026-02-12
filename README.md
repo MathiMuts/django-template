@@ -1,6 +1,16 @@
 # django-template
 A template for Websites using Django, dockerised, redis-cache, tailwind.
 
+## Setup:
+This repository contains multiple branches, to select a certain branch as starting point follow the instructions below.
+>```
+>git checkout tailwind
+>git branch -D main
+>git branch -m main
+>git push -f origin main
+>git push origin --delete tailwind
+>```
+
 ## Development:
 In development you have to start the tailwind filewatcher as well as the webserver:
 
