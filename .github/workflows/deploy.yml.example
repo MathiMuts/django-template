@@ -33,6 +33,12 @@ jobs:
             
             # Pull the latest changes from the git repository
             echo ">> Pulling latest code..."
+            # The repo is chowned to www-data below, so git (running as the SSH user)
+            # sees it as owned by someone else. Trust this directory once, globally.
+            REPO_DIR="$(pwd -P)"
+            echo "   running as $(whoami), repo at $REPO_DIR"
+            git config --global --get-all safe.directory | grep -qxF "$REPO_DIR" \
+              || git config --global --add safe.directory "$REPO_DIR"
             git fetch origin main
             git reset --hard origin/main
             
