@@ -1,13 +1,13 @@
 # docker-compose.override.yml
+#
+# Development only: `docker compose up` merges this file automatically.
+# Production uses `docker compose -f docker-compose.yml ...`, which skips it.
+# Run `python manage.py tailwind start` on your machine for live css.
 
 services:
   web:
     command: python manage.py runserver 0.0.0.0:8000
-    ports:
-      - "${APP_PORT}:8000"
     environment:
-      - DEBUG=True
-      - DJANGO_ENV=development
+      DJANGO_DEBUG: "True"
     volumes:
       - ./:/app
-      - ./theme/static:/app/theme/static
